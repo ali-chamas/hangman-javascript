@@ -103,13 +103,3 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
-.answer-letters{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
-}
-.answer-letter{
-  visibility: hidden;
-}

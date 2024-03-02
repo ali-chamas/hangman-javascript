@@ -14,10 +14,21 @@ for(let i= 0;i<mainWord.length;i++){
 
 const letters=document.querySelectorAll('.letter');
 let answerLetters=document.querySelectorAll('.answer-letter');
+let answerLetter=document.querySelectorAll('.answer-letter')
+
+//styling for the word's letters
+for(let i=0;i<answerLetters.length;i++){
+    answerLetters[i].style.cssText='display: flex; flex-direction: column;justify-content: center;align-items: center;'
+    answerLetter[i].style.cssText='visibility:hidden'
+}
+
+
+
+
 let falseCounter = 0;
 let trueCounter=0;
 
-//function to compare the letters with our input
+//function to compare the main word letters with our input
 function compareLetter(input){
     let isEqual=false;
         
@@ -32,6 +43,7 @@ function compareLetter(input){
    
     if(!isEqual){
         falseCounter++;
+        
     }
 
     if(falseCounter==1){
@@ -82,6 +94,8 @@ document.onkeydown= function (e) {
     e = e || window.event;
    compareLetter(String.fromCharCode(e.keyCode))
 };
+
+
 
 
 
