@@ -1,6 +1,9 @@
 const words=[
     "html","body","hello","sleep","hang","dune"
 ]
+
+//keep track of clicked
+let clickedWords=[];
 const mainWord=words[Math.floor(Math.random()*words.length)];
 
 const answerSection = document.getElementById('answer-section')
@@ -43,7 +46,6 @@ function compareLetter(input){
    
     if(!isEqual){
         falseCounter++;
-        
     }
 
     if(falseCounter==1){
@@ -83,7 +85,7 @@ function compareLetter(input){
 for(let i= 0;i<letters.length;i++){
     letters[i].addEventListener('click',function(button){
         
-       compareLetter(button.target.innerHTML)
+        compareClickedWords(button.target.innerHTML)
     })
    
 }
@@ -92,13 +94,35 @@ for(let i= 0;i<letters.length;i++){
 
 document.onkeydown= function (e) {
     e = e || window.event;
-   compareLetter(String.fromCharCode(e.keyCode))
+    
+    compareClickedWords(String.fromCharCode(e.keyCode))
+
 };
 
 
+//check if the world is clicked before
 
+function compareClickedWords(word){
+    let isClicked=true;
 
+    if(clickedWords.length>0){
+    for(let i =0 ; i<clickedWords.length ; i++){
+        if(word===clickedWords[i]){
+            isClicked=true;
+            break;
+        }else{
+            isClicked=false;
+        }
 
+    }
+    }else{
+        isClicked=false;
+    }
+    if(!isClicked){
+        clickedWords.push(word)
+        compareLetter(word)
+    }
+}
 
 
 
